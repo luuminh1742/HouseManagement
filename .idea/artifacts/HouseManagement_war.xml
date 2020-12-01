@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="HouseManagement:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>HouseManagement</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="HouseManagement-1.0.war">
+      <element id="artifact" artifact-name="HouseManagement:war exploded" />
+    </root>
+  </artifact>
+</component>
