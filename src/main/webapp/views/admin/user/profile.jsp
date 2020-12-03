@@ -77,7 +77,7 @@
                   
                   
                   <div class="card-body p-0">
-	                <table class="table table-sm">
+	                <table class="table table-sm table-hover">
 	                  <tbody>
 	                    <tr>
 	                    	<td>Tên đăng nhập</td>

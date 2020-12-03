@@ -54,15 +54,11 @@
 						</a>
 					</div>
 					<div class="card-body p-0">
-						<table class="table table-striped">
+						<table class="table table-striped table-bordered table-hover">
 							<tbody>
 								<tr>
 									<td style="min-width: 135px;">Tên nhà</td>
 									<td>${model.name}</td>
-								</tr>
-								<tr>
-									<td>Người quản lý</td>
-									<td></td>
 								</tr>
 								<tr>
 									<td>Địa chỉ</td>

@@ -55,7 +55,7 @@
 						phòng</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="roomName"
-							name="roomName" value="${model.roomName}" />
+							name="roomName" value="${model.roomName}" placeholder="VD : 101"/>
 					</div>
 				</div>
 				<div class="form-group">
@@ -63,7 +63,7 @@
 						phòng</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" id="roomMoney"
-							name="roomMoney" value="${model.roomMoney}" />
+							name="roomMoney" value="${model.roomMoney}"/>
 					</div>
 				</div>
 				<div class="form-group">

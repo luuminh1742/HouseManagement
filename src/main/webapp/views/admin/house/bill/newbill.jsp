@@ -45,7 +45,7 @@
 						for="form-field-1"> Số điện cuối tháng </label>
 					<div class="col-sm-9">
 						<input type="text" id="lastElectrictyNumber" placeholder="Số điện"
-							class="col-xs-10 col-sm-5" name="lastElectrictyNumber">
+							class="form-control" name="lastElectrictyNumber">
 					</div>
 				</div>
 				<div class="form-group">
@@ -53,7 +53,7 @@
 						for="form-field-1"> Số nước cuối tháng </label>
 					<div class="col-sm-9">
 						<input type="text" id="lastWaterNumber" placeholder="Số nước"
-							class="col-xs-10 col-sm-5" name="lastWaterNumber"
+							class="form-control" name="lastWaterNumber"
 							<c:if test="${room.typeWaterMoney != 3}">disabled value = "0"</c:if>>
 					</div>
 				</div>
@@ -83,17 +83,11 @@
 			$.each(formData, function(i, v) {
 				data["" + v.name + ""] = v.value;
 			});
-			var checkWater = $
-			{
-				room.typeWaterMoney
-			}
-			;
+			var checkWater = ${room.typeWaterMoney};
 			if (checkWater != 3) {
 				data["lastWaterNumber"] = "0";
 			}
-			data["roomId"] =
-	<%=request.getParameter("roomId")%>
-		;
+			data["roomId"] = <%=request.getParameter("roomId")%>;
 			addBill(data);
 		});
 

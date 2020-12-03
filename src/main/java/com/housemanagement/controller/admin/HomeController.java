@@ -34,9 +34,22 @@ public class HomeController extends HttpServlet{
 		roomStatusStatistics.setListResult(homeService.findByUserId(userModel.getId()));
 		if(roomStatusStatistics.getListResult().size()!=0) {
 			int unfinished = 0;
-			unfinished = roomStatusStatistics.getListResult().get(0).getNumber();
 			int finished = 0;
-			finished = roomStatusStatistics.getListResult().get(1).getNumber();
+			if(roomStatusStatistics.getListResult().size()==1) {
+				if(roomStatusStatistics.getListResult().get(0).getStatus() == 1)
+					finished = roomStatusStatistics.getListResult().get(0).getNumber();
+				else
+					unfinished = roomStatusStatistics.getListResult().get(0).getNumber();
+			}else {
+				if(roomStatusStatistics.getListResult().get(0).getStatus() == 1) {
+					unfinished = roomStatusStatistics.getListResult().get(1).getNumber();
+					finished = roomStatusStatistics.getListResult().get(0).getNumber();
+				}else {
+					unfinished = roomStatusStatistics.getListResult().get(0).getNumber();
+					finished = roomStatusStatistics.getListResult().get(1).getNumber();
+				}
+					
+			}
 			req.setAttribute("unfinished", unfinished);
 			req.setAttribute("finished", finished);
 		}

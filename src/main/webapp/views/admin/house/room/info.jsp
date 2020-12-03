@@ -52,7 +52,7 @@
 			<form id="formSubmit" method="get">
 
 				<div class="table-responsive">
-					<table class="table table-bordered">
+					<table class="table table-bordered table-striped table-hover">
 						<thead>
 							<tr>
 								<th>Họ tên</th>
@@ -62,7 +62,7 @@
 								<th>Giới tính</th>
 								<th>Địa chỉ</th>
 								<th>Điện thoại</th>
-								<th>Ngày vào</th>
+								<th style="width: 100px;">Ngày vào</th>
 								<th style="min-width:110px;">Thao tác</th>
 							</tr>
 						</thead>
@@ -136,7 +136,7 @@
 			<form id="formBill" method="get">
 
 				<div class="table-responsive">
-					<table class="table table-bordered">
+					<table class="table table-bordered table-striped table-hover">
 						<thead>
 							<tr>
 								<th>Ngày tạo</th>

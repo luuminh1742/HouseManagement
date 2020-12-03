@@ -31,7 +31,7 @@
 			<br> <br>
 			<hr>
 			<h3>Phản hồi đã gửi</h3>
-			<table class="table table-striped">
+			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
 						<th><input type="checkbox" id="checkAll"></th>

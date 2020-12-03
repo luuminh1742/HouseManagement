@@ -74,12 +74,12 @@
 				</div>
 				<form id="formSubmit">
 					<div class="card-body table-responsive p-0">
-							<table class="table table-hover text-nowrap">
+							<table class="table table-bordered table-striped table-hover">
 								<thead>
 									<tr>
 										<th>Nhà</th>
 										<th>Phòng</th>
-										<th>Ngày gửi</th>
+										<th style="min-width: 100px;">Ngày gửi</th>
 										<th>Nội dung</th>
 									</tr>
 								</thead>
@@ -115,7 +115,7 @@
 
 	<div class="modal fade" id="dialog1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content">
+			<div class="modal-content card-outline card-red">
 
 				<div class="modal-header">
 					<h5 class="modal-title">Soạn thư</h5>
@@ -139,7 +139,7 @@
 						<textarea rows="5" class="form-control" id="content"
 							placeholder="Nhập nội dung ...."></textarea>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary"
+							<button type="button" class="btn btn-warning"
 								data-dismiss="modal">Hủy</button>
 							<button type="button" class="btn btn-primary" id="send">Gửi</button>
 						</div>

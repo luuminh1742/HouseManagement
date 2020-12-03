@@ -75,7 +75,7 @@
 				method="get">
 				<div class="col-xs-12">
 					<div class="table-responsive">
-						<table class="table table-bordered">
+						<table class="table table-bordered table-striped table-hover">
 							<thead>
 								<tr>
 									<th><input type="checkbox" id="checkAll"></th>

@@ -16,7 +16,7 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="table-responsive">
-							<table class="table table-striped table-bordered">
+							<table class="table table-striped table-bordered table-hover">
 								<thead>
 									<tr>
 										<th>Ngày tạo</th>

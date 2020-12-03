@@ -99,13 +99,13 @@
 								<input type="radio" class="custom-control-input" id="genderMale"
 									name="gender"
 									<c:if test="${model.gender == 'Nam'}">checked</c:if>> <label
-									class="custom-control-label">Nam</label>
+									class="custom-control-label" for="genderMale">Nam</label>
 							</div>
 							<div class="custom-control custom-radio">
 								<input type="radio" class="custom-control-input"
 									id="genderFemale" name="gender"
 									<c:if test="${model.gender == 'Nữ'}">checked</c:if>> <label
-									class="custom-control-label">Nữ</label>
+									class="custom-control-label" for="genderFemale">Nữ</label>
 							</div>
 						</c:if>
 					</div>

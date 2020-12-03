@@ -55,7 +55,7 @@
 				<br>
 				<h4 style="color: red;">Chi tiết hóa đơn</h4>
 	
-				<table class="table table-bordered">
+				<table class="table table-bordered table-hover">
 					<thead>
 						<tr>
 							<th>Loại tiền</th>

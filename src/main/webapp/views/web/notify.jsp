@@ -11,7 +11,7 @@
 	<div class="main-content-inner">
 		<div class="page-content mt-3  mb-3  ml-3  mr-3">
 			<h3>Thông báo</h3>
-			<table class="table table-striped">
+			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
 						<th scope="col">Nội dung thông báo</th>
