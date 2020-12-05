@@ -17,11 +17,12 @@ public class UserService implements IUserService {
 	private IUserDAO userDAO;
 
 	@Override
-	public UserModel addMember(UserModel userModel,String createdBy) {
+	public UserModel addMember(UserModel userModel, String createdBy) {
 		Random rd = new Random();
 		int pass = 111111 + rd.nextInt(999999);
 		userModel.setStatus(1);
-		userModel.setUsername(ConvertStringUtil.toUsername(userModel.getFullName()));
+		userModel.setUsername(ConvertStringUtil.toUsername(userModel.getFullName()) 
+				+ "_" + userModel.getRoomId());
 		userModel.setPassword(String.valueOf(pass));
 		userModel.setRoleId(2L);
 		userModel.setCreatedBy(createdBy);
@@ -51,7 +52,7 @@ public class UserService implements IUserService {
 		for (Long id : ids) {
 			userDAO.delete(id);
 		}
-		
+
 	}
 
 	@Override

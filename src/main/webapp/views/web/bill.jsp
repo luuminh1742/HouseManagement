@@ -3,10 +3,12 @@
 <%@include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Thông tin giao dịch</title>
+	<meta charset="UTF-8">
+	<title>Thông tin giao dịch</title>
 </head>
+
 <body>
 	<div class="main-content-inner">
 		<div class="page-content mt-3  mb-3  ml-3  mr-3">
@@ -39,10 +41,11 @@
 											<td>${item.electrictyMoney}</td>
 											<td>${item.otherMoney}</td>
 											<td>${item.totalMoney}</td>
-											<td><c:if test="${item.status == 0}">Chưa đóng tiền</c:if>
+											<td>
+												<c:if test="${item.status == 0}">Chưa đóng tiền</c:if>
 												<c:if test="${item.status == 1}">Đã đóng tiền</c:if>
 											</td>
-											
+
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -54,4 +57,5 @@
 		</div>
 	</div>
 </body>
+
 </html>

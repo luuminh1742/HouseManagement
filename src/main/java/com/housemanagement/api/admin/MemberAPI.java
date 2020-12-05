@@ -30,7 +30,6 @@ public class MemberAPI  extends HttpServlet{
 		UserModel user = (UserModel) SessionUtil.getInstance().getValue(req, "USERMODEL");
 		userModel = userService.addMember(userModel,user.getFullName());
 		mapper.writeValue(resp.getOutputStream(), userModel);
-		
 	}
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

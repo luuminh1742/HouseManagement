@@ -1,6 +1,7 @@
 package com.housemanagement.controller.admin;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -15,6 +16,7 @@ import com.housemanagement.model.RoomStatusStatisticsModel;
 import com.housemanagement.model.UserModel;
 import com.housemanagement.service.IHomeService;
 import com.housemanagement.service.IHouseService;
+import com.housemanagement.utils.RoomStatusStatisticsUtil;
 import com.housemanagement.utils.SessionUtil;
 
 @WebServlet(urlPatterns = {"/admin"})
@@ -32,6 +34,11 @@ public class HomeController extends HttpServlet{
 		UserModel userModel = (UserModel) SessionUtil.getInstance().getValue(req, "USERMODEL");
 		RoomStatusStatisticsModel roomStatusStatistics = new RoomStatusStatisticsModel();
 		roomStatusStatistics.setListResult(homeService.findByUserId(userModel.getId()));
+		RoomStatusStatisticsUtil roomStatusStatisticsUtil = new RoomStatusStatisticsUtil();
+		List<RoomStatusStatisticsUtil> listRoomStatusStatistics = roomStatusStatisticsUtil.convert(roomStatusStatistics.getListResult());
+		
+		req.setAttribute("RoomStatusStatistics", listRoomStatusStatistics);
+		/*
 		if(roomStatusStatistics.getListResult().size()!=0) {
 			int unfinished = 0;
 			int finished = 0;
@@ -53,6 +60,7 @@ public class HomeController extends HttpServlet{
 			req.setAttribute("unfinished", unfinished);
 			req.setAttribute("finished", finished);
 		}
+		*/
 		 
 		//-- load house name in sidebar
 		HouseModel houseModel = new HouseModel();

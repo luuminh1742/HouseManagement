@@ -3,10 +3,12 @@
 <%@include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Thông báo</title>
+	<meta charset="UTF-8">
+	<title>Thông báo</title>
 </head>
+
 <body>
 	<div class="main-content-inner">
 		<div class="page-content mt-3  mb-3  ml-3  mr-3">
@@ -31,4 +33,5 @@
 		</div>
 	</div>
 </body>
+
 </html>

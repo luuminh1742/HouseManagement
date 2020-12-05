@@ -275,3 +275,12 @@ select * from ViewMessageFromAddmin;
 
 select count(*) from ViewFeedback where houseid = 1
 select count(*) from ViewMessageFromAddmin where houseid = 1
+
+
+select * from bill
+
+select b.status,count(b.status) as number ,DATE_FORMAT(b.createddate, '%Y-%m') as date
+from room r inner join house h on r.houseid = h.id
+inner join bill b on r.id = b.roomid
+inner join manager m on m.houseid = h.id
+ where m.userid = 1 group by date,b.status order by date desc,b.status

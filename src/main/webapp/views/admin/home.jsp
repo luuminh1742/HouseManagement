@@ -3,17 +3,19 @@
 <%@include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Trang chủ</title>
+	<meta charset="UTF-8">
+	<title>Trang chủ</title>
 </head>
+
 <body>
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1>Trang chủ</h1>
+					<h1 class="font-weight-bold text-danger">Trang chủ</h1>
 				</div>
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
@@ -30,43 +32,50 @@
 		<!-- /.card-header -->
 		<div class="card-body">
 			<div class="card card-outline card-primary" style="padding: 20px;">
-              <div class="card-header">
-                <h3 class="card-title">Thống kê</h3>
-				<!-- Thống kê -->
-				<canvas id="pie-chart" width="350" height="150"></canvas>
-				
-              </div>
-              
-            </div>
-            <!-- /.card -->
+				<div class="card-header">
+
+					<h1 class="card-title">Thống kê trạng thái hóa đơn từng tháng</h1>
+					<br>
+
+					<!-- ChartJS -->
+					<script src='<c:url value="/template/admin/plugins/chart.js/Chart.min.js"/>'></script>
+					<!-- Thống kê -->
+					<c:forEach var="item" items="${RoomStatusStatistics}">
+						<hr>
+						<canvas id="d${item.date}" width="300" height="100"></canvas>
+						<script>
+							new Chart(document.getElementById("d${item.date}"), {
+								type: 'pie',
+								data: {
+									labels: ["Đã đóng tiền", "Chưa đóng tiền"],
+									datasets: [{
+										label: "đơn vị (phòng)",
+										backgroundColor: ["#0b8902", "#cd2701"],
+										data: [${ item.finished }, ${ item.unfinished }]
+									}]
+								},
+								options: {
+									title: {
+										display: true,
+										text: 'Biểu đồ thống kê hóa đơn tháng ${item.date}'
+									}
+								}
+							});
+						</script>
+
+					</c:forEach>
+				</div>
+
+			</div>
+			<!-- /.card -->
 		</div>
 	</section>
-	
-	<!-- ChartJS -->
-	<script
-		src='<c:url value="/template/admin/plugins/chart.js/Chart.min.js"/>'></script>
-	
-	<script>
-		new Chart(document.getElementById("pie-chart"), {
-		    type: 'pie',
-		    data: {
-		      labels: ["Đã đóng tiền","Chưa đóng tiền"],
-		      datasets: [{
-		        label: "đơn vị (phòng)",
-		        backgroundColor: ["#0b8902","#cd2701" ],
-		        data: [${finished},${unfinished}]
-		      }]
-		    },
-		    options: {
-		      title: {
-		        display: true,
-		        text: 'Biểu đồ thống kê tiền nhà'
-		      }
-		    }
-		});
-		
-		
-		
-	</script>
+
+
+
+
+
+
 </body>
+
 </html>

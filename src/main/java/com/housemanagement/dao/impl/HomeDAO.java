@@ -11,11 +11,11 @@ public class HomeDAO extends AbstractDAO<RoomStatusStatisticsModel> implements I
 	@Override
 	public List<RoomStatusStatisticsModel> findByUserId(Long userId) {
 		StringBuilder sql = new StringBuilder();
-		sql.append("select b.status,count(b.status) as number ");
+		sql.append("select b.status,count(b.status) as number ,DATE_FORMAT(b.createddate, '%m-%Y') as date ");
 		sql.append(" from room r inner join house h on r.houseid = h.id ");
 		sql.append(" inner join bill b on r.id = b.roomid ");
 		sql.append(" inner join manager m on m.houseid = h.id ");
-		sql.append(" where m.userid = ? group by b.status order by b.status");
+		sql.append(" where m.userid = ? group by date,b.status order by date desc,b.status");
 		return query(sql.toString(),new RoomStatusStatisticsMapper(), userId);
 	}
 

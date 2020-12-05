@@ -13,6 +13,7 @@ public class RoomStatusStatisticsMapper implements RowMapper<RoomStatusStatistic
 			RoomStatusStatisticsModel roomStatusStatistics = new RoomStatusStatisticsModel();
 			roomStatusStatistics.setStatus(resultSet.getInt("status"));
 			roomStatusStatistics.setNumber(resultSet.getInt("number"));
+			roomStatusStatistics.setDate(resultSet.getString("date"));
 			return roomStatusStatistics;
 		} catch (SQLException e) {
 			return null;

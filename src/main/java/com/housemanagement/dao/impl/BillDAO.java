@@ -10,7 +10,7 @@ public class BillDAO extends AbstractDAO<BillModel> implements IBillDAO{
 
 	@Override
 	public List<BillModel> findByRoomId(Long roomId) {
-		String sql = "select * from bill where roomid = ?";
+		String sql = "select * from bill where roomid = ? order by createddate desc";
 		return query(sql, new BillMapper(), roomId);
 	}
 

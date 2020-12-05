@@ -4,10 +4,12 @@
 <c:url var="APIurl" value="/api-admin-bill" />
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Hóa đơn cuối tháng</title>
+	<meta charset="UTF-8">
+	<title>Hóa đơn cuối tháng</title>
 </head>
+
 <body>
 
 	<!-- Content Header (Page header) -->
@@ -15,14 +17,14 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1>Hóa đơn cuối tháng</h1>
+					<h1 class="font-weight-bold text-danger">Hóa đơn cuối tháng</h1>
 				</div>
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
 						<li class="breadcrumb-item"><a href="<c:url value='/admin'/>">Trang
 								chủ</a></li>
-						<li class="breadcrumb-item"><a
-							href="<c:url value='/admin/housemanagement'/>">Quản lý nhà</a></li>
+						<li class="breadcrumb-item"><a href="<c:url value='/admin/housemanagement'/>">Quản lý nhà</a>
+						</li>
 						<li class="breadcrumb-item">Quản lý phòng</li>
 						<li class="breadcrumb-item active">Hóa đơn cuối tháng</li>
 					</ol>
@@ -37,36 +39,35 @@
 	<section class="content">
 		<!-- /.card-header -->
 		<div class="card-body">
-		<div class="card card-outline card-primary" style="padding: 20px;">
+			<div class="card card-outline card-primary" style="padding: 20px;">
 
-			<form id="formSubmit">
-				<div class="form-group">
-					<label class="col-sm-3 control-label no-padding-right"
-						for="form-field-1"> Số điện cuối tháng </label>
-					<div class="col-sm-9">
-						<input type="text" id="lastElectrictyNumber" placeholder="Số điện"
-							class="form-control" name="lastElectrictyNumber">
+				<form id="formSubmit">
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Số điện cuối tháng
+						</label>
+						<div class="col-sm-9">
+							<input type="text" id="lastElectrictyNumber" placeholder="Số điện" class="form-control"
+								name="lastElectrictyNumber">
+						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-3 control-label no-padding-right"
-						for="form-field-1"> Số nước cuối tháng </label>
-					<div class="col-sm-9">
-						<input type="text" id="lastWaterNumber" placeholder="Số nước"
-							class="form-control" name="lastWaterNumber"
-							<c:if test="${room.typeWaterMoney != 3}">disabled value = "0"</c:if>>
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Số nước cuối tháng
+						</label>
+						<div class="col-sm-9">
+							<input type="text" id="lastWaterNumber" placeholder="Số nước" class="form-control"
+								name="lastWaterNumber" <c:if test="${room.typeWaterMoney != 3}">disabled value = "0"
+							</c:if>>
+						</div>
 					</div>
-				</div>
 
-				<div class="form-group">
-					<div class="col-sm-12">
-						<input type="button" class="btn btn-white btn-warning btn-bold"
-							value="Tạo hóa đơn" id="btnAddBill" /> <input type="button"
-							class="btn btn-white btn-warning btn-bold" value="Trở về"
-							onclick="goBack()" />
+					<div class="form-group">
+						<div class="col-sm-12">
+							<input type="button" class="btn btn-white btn-warning btn-bold" value="Tạo hóa đơn"
+								id="btnAddBill" /> <input type="button" class="btn btn-white btn-warning btn-bold"
+								value="Trở về" onclick="goBack()" />
+						</div>
 					</div>
-				</div>
-			</form>
+				</form>
 			</div>
 		</div>
 	</section>
@@ -76,34 +77,42 @@
 		function goBack() {
 			window.history.back();
 		}
-		$('#btnAddBill').click(function(e) {
+		$('#btnAddBill').click(function (e) {
 			e.preventDefault();
 			var data = {};
 			var formData = $('#formSubmit').serializeArray();
-			$.each(formData, function(i, v) {
+			$.each(formData, function (i, v) {
 				data["" + v.name + ""] = v.value;
 			});
-			var checkWater = ${room.typeWaterMoney};
+			var checkWater = ${ room.typeWaterMoney };
 			if (checkWater != 3) {
 				data["lastWaterNumber"] = "0";
 			}
-			data["roomId"] = <%=request.getParameter("roomId")%>;
-			addBill(data);
+			data["roomId"] = <%=request.getParameter("roomId") %>;
+
+			var checkNumber = /[A-Za-z\W_]/;
+			if (checkNumber.test(data["lastElectrictyNumber"]) ||
+				checkNumber.test(data["lastWaterNumber"])) {
+				alert("Thông tin đầu vào không hợp lệ!");
+			} else {
+				addBill(data);
+			}
+			//addBill(data);
 		});
 
 		function addBill(data) {
 			$.ajax({
-				url : '${APIurl}',
-				type : 'POST',
-				contentType : 'application/json',
-				data : JSON.stringify(data),
-				dataType : 'json',
-				success : function(result) {
+				url: '${APIurl}',
+				type: 'POST',
+				contentType: 'application/json',
+				data: JSON.stringify(data),
+				dataType: 'json',
+				success: function (result) {
 					window.history.back();
 					alert("Thêm thành công");
 					//console.log(result);
 				},
-				error : function(error) {
+				error: function (error) {
 					alert("Thêm thất bại");
 					//console.log(error);
 				}
@@ -111,4 +120,5 @@
 		}
 	</script>
 </body>
+
 </html>
